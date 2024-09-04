@@ -86,8 +86,11 @@ sudo apt-get install rabbitmq-server -y --fix-missing
 @@ on node -1
 
 ```vi /var/lib/rabbitmq/.erlang.cookie``` to get the cookie string which rabbitmq will use inorder to communicate with other nodes.
+Then restart the rabbitmq service:- systemctl restart rabbitmq-server
 
 @@@ then replace the cookie string which you got above in the same path of which is mentioned above in node2 and node3 
+
+Before that ensure that app has started in the node-1 or else you can start it with the command:- sudo rabbitmqctl start_app
 
 !!! **commands to executed on all the worker nodes that will join the cluster.**
 
@@ -112,7 +115,7 @@ sudo apt-get install rabbitmq-server -y --fix-missing
 **Run the following command to check the cluster status and verify the nodes.**
 
 ```shell
-   rabbitmqctl cluster status
+   rabbitmqctl cluster_status
 ```
 
 # 4. Creating the a user with admin permission and deleting the default guest user.
